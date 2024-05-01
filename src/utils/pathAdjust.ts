@@ -6,12 +6,13 @@ import * as path from "path";
  * */
 export const makeAbsolutePath = ({
   relativePath,
-  workspaceFolders,
 }: {
   relativePath: string;
-  workspaceFolders: readonly vscode.WorkspaceFolder[] | undefined;
-}): string => {
-  const rootPath = workspaceFolders![0].uri.fsPath;
+}): string | undefined => {
+  if (!vscode.workspace.workspaceFolders) {
+    return;
+  }
+  const rootPath = vscode.workspace.workspaceFolders![0].uri.fsPath;
   const absolutePath = path.join(
     rootPath,
     relativePath.trim().replaceAll("'", "").replaceAll('"', "")
@@ -20,13 +21,16 @@ export const makeAbsolutePath = ({
 };
 
 /**
- * Make absolute path to image preview markdown string
+ * Make absolute path and image preview markdown string
  * */
 export const makeImagePreviewMarkdown = ({
-  absolutePath,
+  relativePath,
 }: {
-  absolutePath: string;
+  relativePath: string;
 }) => {
-  const imagePreviewMarkdown = `![image preview](${absolutePath}|width=100)`;
+  const absolutePath = makeAbsolutePath({
+    relativePath: relativePath,
+  });
+  const imagePreviewMarkdown = `![image preview](${absolutePath}|width=100)\n    *${relativePath}*`;
   return imagePreviewMarkdown;
 };

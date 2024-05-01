@@ -1,11 +1,7 @@
-interface FilePath {
-  filePath: string;
-}
-
 /**
  * Check whether it is a local file path & already preview markdown
  * */
-export const isValidLocalImagePath = ({ filePath }: FilePath): boolean => {
+export const isLocalImagePath = ({ filePath }: FilePath): boolean => {
   const pattern: RegExp =
     /^(?!.*(?:https?:\/\/|www\.))["']?.*\.(jpg|jpeg|svg|png|gif)["']?$/i;
   const isLocalFilePath: boolean = pattern.test(filePath);

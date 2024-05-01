@@ -1,5 +1,5 @@
 import * as vscode from "vscode";
-import { isImageFormat, isValidLocalImagePath } from "../utils/validations";
+import { isImageFormat, isLocalImagePath } from "../utils/validations";
 import {
   makeAbsolutePath,
   makeImagePreviewMarkdown,
@@ -21,13 +21,20 @@ export const extractImageLineAndMakePreview = ({
       const contentValue: string =
         typeof content === "string" ? content : content.value;
 
-      if (isImageFormat({ filePath: contentValue })) {
-        const imagePreviewMarkdown = convertFilePathToMarkDown({
-          filePath: contentValue,
-          workspaceFolders: workspaceFolders,
+      const isContentHasImageData = isImageFormat({ filePath: contentValue });
+      // get the paragraph which contains image format from the hover contents
+      if (isContentHasImageData) {
+        const docImageContextArray = contentValue.split("\n");
+        // make paragraph as line
+        docImageContextArray.forEach((line) => {
+          const isLineHasImage = isImageFormat({ filePath: line });
+          if (isLineHasImage) {
+            const imagePreviewMarkdown = convertFilePathToMarkDown({
+              filePath: line,
+            });
+            imagePreviewMarkdown && markDownArray.push(imagePreviewMarkdown);
+          }
         });
-
-        imagePreviewMarkdown && markDownArray.push(imagePreviewMarkdown);
       }
     }
     if (markDownArray.length > 0) {
@@ -36,10 +43,10 @@ export const extractImageLineAndMakePreview = ({
   } else {
     const contentValue =
       typeof hoverContents === "string" ? String(hoverContents) : hoverContents;
+
     if (isImageFormat({ filePath: contentValue })) {
       const imagePreviewMarkdown = convertFilePathToMarkDown({
         filePath: contentValue,
-        workspaceFolders: workspaceFolders,
       });
 
       if (imagePreviewMarkdown) {
@@ -55,26 +62,17 @@ export const extractImageLineAndMakePreview = ({
  * */
 const convertFilePathToMarkDown = ({
   filePath,
-  workspaceFolders,
 }: {
   filePath: string;
-  workspaceFolders: readonly vscode.WorkspaceFolder[] | undefined;
 }): string | undefined => {
   const imagePath = filePath
     .split("\n")
-    .find((line) => isValidLocalImagePath({ filePath: line }));
-
-  const absolutePath =
-    imagePath &&
-    makeAbsolutePath({
-      workspaceFolders: workspaceFolders!,
-      relativePath: imagePath,
-    });
+    .find((line) => isLocalImagePath({ filePath: line }));
 
   const markdown =
-    absolutePath &&
+    imagePath &&
     makeImagePreviewMarkdown({
-      absolutePath: absolutePath,
+      relativePath: imagePath,
     });
 
   return markdown;
