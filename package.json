@@ -24,7 +24,7 @@
         "jsdocCommentImagePreview.completionPreview": {
           "type": "boolean",
           "title": "Show Preview in Completion List",
-          "markdownDescription": "If set to `true`, supports previewing image`(jpg, jpeg, png, svg)` by relative paths of local file in doc comments within the completion list. Currently supports only Dart. If this [GitHub Issue](https://github.com/microsoft/vscode/issues/127015) is resolved, JS/TS will also be supported.",
+          "markdownDescription": "If set to `true`, supports previewing image`(jpg, jpeg, png, gif, svg)` by relative paths of local file in doc comments within the completion list.",
           "default": true
         }
       }

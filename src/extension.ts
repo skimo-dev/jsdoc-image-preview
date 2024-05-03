@@ -10,14 +10,50 @@ const supportLanguages: string[] = [
 ];
 
 export function activate(context: vscode.ExtensionContext) {
-  const hoverProvider = hoverPreviewProvider({
+  const hoverProvider: vscode.Disposable = hoverPreviewProvider({
     supportLanguages: supportLanguages,
   });
-  const completionProvider = completionPreviewProvider({
-    languageArray: supportLanguages,
-  });
 
-  context.subscriptions.push(hoverProvider, completionProvider);
+  const configListener: vscode.Disposable =
+    vscode.workspace.onDidChangeConfiguration((e) => {
+      if (
+        e.affectsConfiguration("jsdocCommentImagePreview.completionPreview")
+      ) {
+        updateCompletionProvider(context);
+      }
+    });
+  context.subscriptions.push(hoverProvider, configListener);
+
+  // initial register of completion provider
+  updateCompletionProvider(context);
 }
 
 export function deactivate(): void {}
+
+const updateCompletionProvider = (context: vscode.ExtensionContext) => {
+  // delete the current jsdocCommentImagePreviewCompletionProvider
+  const existingCompletionProviderIndex: number =
+    context.subscriptions.findIndex(
+      (sub) => (sub as any).tag === "jsdocCommentImagePreviewCompletionProvider"
+    );
+  if (existingCompletionProviderIndex !== -1) {
+    context.subscriptions[existingCompletionProviderIndex].dispose();
+    context.subscriptions.splice(existingCompletionProviderIndex, 1);
+  }
+
+  // get user config -> jsdocCommentImagePreview property value (default : true)
+  const config: vscode.WorkspaceConfiguration =
+    vscode.workspace.getConfiguration("jsdocCommentImagePreview");
+  const enableCompletionPreview: boolean = config.get<boolean>(
+    "completionPreview",
+    true
+  );
+  if (enableCompletionPreview) {
+    const completionProvider: vscode.Disposable = completionPreviewProvider({
+      languageArray: supportLanguages,
+    });
+    (completionProvider as any).tag =
+      "jsdocCommentImagePreviewCompletionProvider"; // add tag for identifying
+    context.subscriptions.push(completionProvider);
+  }
+};
