@@ -1,9 +1,6 @@
 import * as vscode from "vscode";
 import { isImageFormat, isLocalImagePath } from "../utils/validations";
-import {
-  makeAbsolutePath,
-  makeImagePreviewMarkdown,
-} from "../utils/pathAdjust";
+import { makeImagePreviewMarkdown } from "../utils/pathAdjust";
 
 export const extractImageLineAndMakePreview = ({
   hoverContents,

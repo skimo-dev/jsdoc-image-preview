@@ -1,7 +1,6 @@
 import * as vscode from "vscode";
 
 import { isLocalImagePath } from "../utils/validations";
-import { makeAbsolutePath } from "../utils/pathAdjust";
 import { closeWebView, openWebView } from "./webviewControll";
 import { getJSDocFromFile } from "../utils/readFile";
 

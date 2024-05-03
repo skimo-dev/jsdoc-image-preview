@@ -1,20 +1,71 @@
-# jsdoc-image-preview README
+# JSDoc Comment Image Preview
 
-This is the README for your extension "jsdoc-image-preview". After writing up a brief description, we recommend including the following sections.
+Supports previewing image files( _.jpg, .jpeg, .png, .svg, .gif_ ) by local relative paths in JSDoc comments.
+
+<div style="height:16px;"></div>
 
 ## Features
 
-Describe specific features of your extension including screenshots of your extension in action. Image paths are relative to this README file.
+- Provides a preview of a local image when relative file paths are used in JSDoc comments.
 
-For example if there is an image subfolder under your extension project workspace:
+- Hovering identifier displays a preivew in a hover popup.
 
-\!\[feature X\]\(images/feature-x.png\)
+- Focusing an item from the autocompletion list by keyboard displays a preview in a side webview.
 
-> Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
+- The side webview automatically closes if the autocomplete list cannot be generated.
 
-## Requirements
+- Supports multiple lines of image paths.
+
+- Local image paths should not be mixed with any characters except for quotation marks(`'`,`"`) on the same line in JSDoc comments.
+
+  ```typescript
+  /**
+   * images/example.png                        <- ✅ This is OK
+   */
+  export const exampleImage: string = "images/example.png";
+
+  /**
+   * 'images/example.png'                      <- ✅ This is OK
+   */
+  export const exampleImage: string = "images/example.png";
+
+  /**
+   * Example Image :
+   * images/example1.png
+   *
+   * images/example2.png
+   *
+   * multiline comments and multiline images   <- ✅ This is OK
+   */
+  export const exampleImage: string = "images/example.png";
+
+  /**
+   * Example Image : images/example.png        <- ❌ Not Working
+   */
+  export const exampleImage: string = "images/example.png";
+  ```
+
+  > 🚨 **URL Path** and **Absolute Path** are also not working.
+
+<div style="height:48px;"></div>
+
+## Usage Example
+
+### &nbsp;&nbsp;&nbsp;Copy & Paste Relative Path on the Doc comment
+
+- Get Relative Path from the VSCode
+
+### &nbsp;&nbsp;&nbsp;Hover Preview
+
+- JS / JSX / TS / TSX
+
+### &nbsp;&nbsp;&nbsp;Completion Preview
+
+- JS / JSX / TS / TSX
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+
+<div style="height:48px;"></div>
 
 ## Extension Settings
 
@@ -24,12 +75,16 @@ For example:
 
 This extension contributes the following settings:
 
-* `myExtension.enable`: Enable/disable this extension.
-* `myExtension.thing`: Set to `blah` to do something.
+- `myExtension.enable`: Enable/disable this extension.
+- `myExtension.thing`: Set to `blah` to do something.
+
+<div style="height:48px;"></div>
 
 ## Known Issues
 
 Calling out known issues can help limit users opening duplicate issues against your extension.
+
+<div style="height:48px;"></div>
 
 ## Release Notes
 
@@ -49,23 +104,17 @@ Added features X, Y, and Z.
 
 ---
 
+<div style="height:48px;"></div>
+
 ## Following extension guidelines
 
 Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
 
-* [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
+- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
 
-## Working with Markdown
-
-You can author your README using Visual Studio Code. Here are some useful editor keyboard shortcuts:
-
-* Split the editor (`Cmd+\` on macOS or `Ctrl+\` on Windows and Linux).
-* Toggle preview (`Shift+Cmd+V` on macOS or `Shift+Ctrl+V` on Windows and Linux).
-* Press `Ctrl+Space` (Windows, Linux, macOS) to see a list of Markdown snippets.
+<div style="height:48px;"></div>
 
 ## For more information
 
-* [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-* [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
-
-**Enjoy!**
+- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
+- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)

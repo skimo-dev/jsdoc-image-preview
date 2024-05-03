@@ -1,6 +1,4 @@
 import * as fs from "fs";
-import * as jsoncParser from "jsonc-parser";
-import path = require("path");
 import * as vscode from "vscode";
 
 export const getJSDocFromFile = async ({
