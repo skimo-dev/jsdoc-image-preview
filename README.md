@@ -1,6 +1,11 @@
-# JSDoc Comment Image Preview
+# About JSDoc Comment Image Preview
 
-Supports previewing image files( _.jpg, .jpeg, .png, .svg, .gif_ ) by local relative paths in JSDoc comments.
+This is for people who find it bothersome to locate and open image files during development or maintenance.  
+VSCode supports Markdown previews in JSDoc comments with the syntax `![image](image path)`, but this feature only works with web URLs or the absolute paths of files.  
+Even when using web URLs, this does not work for private repositories, and absolute paths are no longer absolute when collaborating.  
+It supports previewing image files( _.jpg, .jpeg, .png, .svg, .gif_ ) by local relative paths in JSDoc comments.
+
+<a href="https://www.buymeacoffee.com/skimo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="40" width="180"></a>
 
 <div style="height:16px;"></div>
 
@@ -53,68 +58,55 @@ Supports previewing image files( _.jpg, .jpeg, .png, .svg, .gif_ ) by local rela
 
 ### &nbsp;&nbsp;&nbsp;Copy & Paste Relative Path on the Doc comment
 
-- Get Relative Path from the VSCode
+- Get relative path of image and include it in the JSDoc(Required)
+
+  <img src="assets/copy_paste.gif" width="960" alt="Copy Paste">
+<br />
 
 ### &nbsp;&nbsp;&nbsp;Hover Preview
 
-- JS / JSX / TS / TSX
+- The preview of image appears in hover popup
+
+  <img src="assets/hover_preview.gif" width="960" alt="Hover Preview">
+<br/>
+
+- Multiple lines of images are also possible
+
+  <img src="assets/hover_multiple.gif" width="960" alt="Hover Multiple">
+<br/>
 
 ### &nbsp;&nbsp;&nbsp;Completion Preview
 
-- JS / JSX / TS / TSX
+- The preview of image appears in the side webview
+- The Webview closes automatically
 
-If you have any requirements or dependencies, add a section describing those and how to install and configure them.
+  <img src="assets/completion_preview.gif" width="960" alt="Completion Preview">
+<br/>
+
+- If there are identifiers with the same name, they are displayed together in the webview
+
+  <img src="assets/completion_same_name.gif" width="960" alt="Completion Preview">
 
 <div style="height:48px;"></div>
 
 ## Extension Settings
 
-Include if your extension adds any VS Code settings through the `contributes.configuration` extension point.
-
-For example:
-
-This extension contributes the following settings:
-
-- `myExtension.enable`: Enable/disable this extension.
-- `myExtension.thing`: Set to `blah` to do something.
+- `jsdocCommentImagePreview.completionPreview`: Enable/disable completion preview.
 
 <div style="height:48px;"></div>
 
 ## Known Issues
 
-Calling out known issues can help limit users opening duplicate issues against your extension.
+When a mouse click action occurs outside of the autocomplete list popup while a webview is open, the autocomplete popup may close, but the webview remains open.
 
 <div style="height:48px;"></div>
 
 ## Release Notes
 
-Users appreciate release notes as you update your extension.
-
-### 1.0.0
-
-Initial release of ...
-
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
+Please refer to the [Changelog](CHANGELOG.md) for changes.
 
 <div style="height:48px;"></div>
 
-## Following extension guidelines
+## Feature Request & Bug Report
 
-Ensure that you've read through the extensions guidelines and follow the best practices for creating your extension.
-
-- [Extension Guidelines](https://code.visualstudio.com/api/references/extension-guidelines)
-
-<div style="height:48px;"></div>
-
-## For more information
-
-- [Visual Studio Code's Markdown Support](http://code.visualstudio.com/docs/languages/markdown)
-- [Markdown Syntax Reference](https://help.github.com/articles/markdown-basics/)
+Feature requests and bug reports are always welcome. Please open an issue at the [Github repository](https://github.com/skimo-dev/jsdoc-image-preview/issues).

@@ -2,7 +2,7 @@
   "name": "jsdoc-image-preview",
   "displayName": "JSDoc Comment Image Preview",
   "description": "Provide local image's hover & completion preview based on the JSDoc comment",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.88.0"
   },
@@ -49,5 +49,9 @@
     "eslint": "^8.57.0",
     "typescript": "^5.3.3"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skimo-dev/jsdoc-image-preview"
+  }
 }
