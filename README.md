@@ -1,26 +1,19 @@
 # About JSDoc Comment Image Preview
 
 This is for people who find it bothersome to locate and open image files during development or maintenance.  
-VSCode supports Markdown previews in JSDoc comments with the syntax `![image](image path)`, but this feature only works with web URLs or the absolute paths of files.  
+VSCode supports Markdown previews in JSDoc comments with the syntax `![image](path of image file)`, but this feature only works with web URLs or the absolute paths of files.  
 Even when using web URLs, this does not work for private repositories, and absolute paths are no longer absolute when collaborating.  
 It supports previewing image files( _.jpg, .jpeg, .png, .svg, .gif_ ) by local relative paths in JSDoc comments.
 
 <a href="https://www.buymeacoffee.com/skimo" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="40" width="180"></a>
 
-<div style="height:16px;"></div>
-
 ## Features
 
 - Provides a preview of a local image when relative file paths are used in JSDoc comments.
-
 - Hovering identifier displays a preivew in a hover popup.
-
 - Focusing an item from the autocompletion list by keyboard displays a preview in a side webview.
-
 - The side webview automatically closes if the autocomplete list cannot be generated.
-
 - Supports multiple lines of image paths.
-
 - Local image paths should not be mixed with any characters except for quotation marks(`'`,`"`) on the same line in JSDoc comments.
 
   ```typescript
@@ -51,8 +44,6 @@ It supports previewing image files( _.jpg, .jpeg, .png, .svg, .gif_ ) by local r
   ```
 
   > 🚨 **URL Path** and **Absolute Path** are also not working.
-
-<div style="height:48px;"></div>
 
 ## Usage Example
 
