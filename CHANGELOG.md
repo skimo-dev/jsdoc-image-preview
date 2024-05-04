@@ -1,5 +1,9 @@
 # Change Log
 
+## [1.0.4]
+
+- Change logo background color to Typescript official color(#3178C6).
+
 ## [1.0.3]
 
 - Change markdown texts to unicode in README.md to avoid marketplace rendering.

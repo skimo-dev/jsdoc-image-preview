@@ -69,7 +69,7 @@ It supports previewing image files( _.jpg, .jpeg, .png, .svg, .gif_ ) by local r
 ### &nbsp;&nbsp;&nbsp;Completion Preview
 
 - The preview of image appears in the side webview
-- The Webview closes automatically
+- The webview closes automatically
 
   <img src="assets/completion_preview.gif" width="960" alt="Completion Preview">
 <br/>
