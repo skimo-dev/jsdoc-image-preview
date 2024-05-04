@@ -82,7 +82,7 @@ export const completionPreviewProvider = ({
                 insertText: selectedText,
                 labelPath: labelPath
                   ? labelPath
-                  : "Import Statement or Unknown Source",
+                  : "This file or Unknown Source",
                 imagePathArray: filteredJsDoc ? filteredJsDoc : [],
               };
               if (webViewContents.imagePathArray.length > 0) {
