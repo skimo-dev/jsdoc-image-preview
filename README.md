@@ -1,7 +1,7 @@
 # About JSDoc Comment Image Preview
 
 This is for people who find it bothersome to locate and open image files during development or maintenance.  
-VSCode supports Markdown previews in JSDoc comments with the syntax `![image](path of image file)`, but this feature only works with web URLs or the absolute paths of files.  
+VSCode supports Markdown previews in JSDoc comments with the syntax <code>![image](image path)</code>, but this feature only works with web URLs or the absolute paths of files.  
 Even when using web URLs, this does not work for private repositories, and absolute paths are no longer absolute when collaborating.  
 It supports previewing image files( _.jpg, .jpeg, .png, .svg, .gif_ ) by local relative paths in JSDoc comments.
 

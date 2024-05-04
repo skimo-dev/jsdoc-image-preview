@@ -1,10 +1,13 @@
 # Change Log
 
-## [1.0.0]
+## [1.0.2]
 
-- Initial release
+- Fix README.md to solve marketplace backquote markdown rendering error
 
 ## [1.0.1]
 
 - Adjust logo image
-- read.md backquote markdown error solve
+
+## [1.0.0]
+
+- Initial release
