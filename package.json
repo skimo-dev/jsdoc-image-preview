@@ -8,6 +8,9 @@
     "type": "git",
     "url": "https://github.com/skimo-dev/jsdoc-image-preview"
   },
+  "bugs": {
+    "url": "https://github.com/skimo-dev/jsdoc-image-preview/issues"
+  },
   "readme": "README.md",
   "license": "MIT",
   "version": "1.0.0",
